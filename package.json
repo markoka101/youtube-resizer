@@ -1,0 +1,25 @@
+{
+	"name": "yt-dimension-adjuster",
+	"version": "1.1.0",
+	"description": "Automatically loads your custom layouts and opens options on toolbar click.",
+	"main": "background.js",
+	"scripts": {
+		"format": "prettier --write \"**/*.{js,json,css,md}\"",
+		"format:check": "prettier --check \"**/*.{js,json,css,md}\""
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/markoka101/youtube-resizer.git"
+	},
+	"keywords": [],
+	"author": "Mark Oka",
+	"license": "ISC",
+	"type": "commonjs",
+	"bugs": {
+		"url": "https://github.com/markoka101/youtube-resizer/issues"
+	},
+	"homepage": "https://github.com/markoka101/youtube-resizer#readme",
+	"devDependencies": {
+		"prettier": "^3.8.5"
+	}
+}
