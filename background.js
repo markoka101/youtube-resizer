@@ -1,8 +1,6 @@
 function scheduleOpenSettingsModal(tabId) {
 	setTimeout(() => {
-		chrome.tabs
-			.sendMessage(tabId, { action: 'OPEN_SETTINGS_MODAL' })
-			.catch((e) => console.error(e));
+		chrome.tabs.sendMessage(tabId, { action: 'OPEN_SETTINGS_MODAL' }).catch(console.error);
 	}, 100);
 }
 
@@ -15,15 +13,12 @@ function injectContentScript(tabId) {
 		.then(() => {
 			scheduleOpenSettingsModal(tabId);
 		})
-		.catch((execErr) => console.error('Script injection failed:', execErr));
+		.catch((err) => console.error('Script injection failed:', err));
 }
 
 function openSettingsModal(tabId) {
 	chrome.tabs.sendMessage(tabId, { action: 'OPEN_SETTINGS_MODAL' }).catch((err) => {
-		console.log(
-			'Orphaned tab detected or content script uninitialized. Injecting manually...',
-			err
-		);
+		console.log('Content script not initialized, injecting...', err);
 		injectContentScript(tabId);
 	});
 }
