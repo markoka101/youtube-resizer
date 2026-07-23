@@ -67,8 +67,11 @@
             throw new Error('Breakpoints must be a non-empty array.');
         }
         return parsed
-            .map((bp) => {
-            const maxWidthRaw = bp.maxWidth;
+            .map((bp, index) => {
+            const isLast = index === parsed.length - 1;
+            // If maxWidth is missing on the last breakpoint, treat it as "Infinity"
+            const rawMaxWidth = bp.maxWidth ?? (isLast ? 'Infinity' : undefined);
+            const maxWidthRaw = rawMaxWidth;
             let maxWidth;
             if (maxWidthRaw === 'Infinity') {
                 maxWidth = Infinity;
