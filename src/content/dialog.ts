@@ -118,7 +118,8 @@
 	): string | null {
 		nextConfig.mode = controls.adaptiveCheckbox?.checked ? 'adaptive' : 'manual';
 
-		if (!controls.breakpointsInput) {
+		// If adaptive mode is OFF or there is no textarea, keep existing breakpoints
+		if (nextConfig.mode !== 'adaptive' || !controls.breakpointsInput) {
 			return null;
 		}
 
