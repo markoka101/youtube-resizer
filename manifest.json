@@ -3,7 +3,7 @@
 	"name": "YouTube Layout Customizer",
 	"version": "2.0.0",
 	"description": "Customizes YouTube layouts and remembers your settings.",
-	"permissions": ["storage", "scripting", "activeTab"],
+	"permissions": ["storage", "scripting"],
 	"background": {
 		"service_worker": "background.js"
 	},
@@ -11,7 +11,14 @@
 	"content_scripts": [
 		{
 			"matches": ["https://*.youtube.com/*"],
-			"js": ["content.js"]
+			"css": ["content/styles.css"],
+			"js": [
+				"dist/content/config.js",
+				"dist/content/layout.js",
+				"dist/content/dialog.js",
+				"dist/content/index.js"
+			],
+			"run_at": "document_idle"
 		}
 	],
 	"host_permissions": ["https://*.youtube.com/*"]
